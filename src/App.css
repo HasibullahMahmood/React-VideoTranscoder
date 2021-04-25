@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+body {
+	color: #1f4671;
+}
+.home__header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 0.1rem solid #d9e0ea;
+	margin-bottom: 3rem;
+	padding: 1rem 0;
+	color: #26578e;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home__header h1 {
+	text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home__left-cart,
+.home__right-cart {
+	border-radius: 0.5rem;
+	padding: 1rem;
+	border: 0.1rem solid #d9e0ea;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* .home__left-cart {
+	background-color: #f7f8fa;
+} */
+
+.home__right-cart {
+	height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.home__cart-title {
+	border-bottom: 2px solid #ff6b6b;
+	display: inline-flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.label {
+	color: #637792;
+	font-size: 1rem;
+	margin-top: 1rem;
+	font-weight: 600;
+}
+
+.dropzone {
+	border: 0.1rem dashed #d9e0ea;
+	background-color: white;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 10rem;
+}
+
+.dropzone svg {
+	display: block;
+	width: 100%;
+	color: #687f98;
+}
+
+.dz-message1 {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.dz-message2 {
+	font-size: 0.9rem;
+}
+
+.choose-another-file-btn {
+	cursor: pointer;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 600;
+	color: #3270e9;
+	margin-top: 0.5rem;
+}
+
+.select-default > div,
+.select-default > div div {
+	border-color: #d9e0ea !important;
+	box-shadow: none !important;
+	color: #637792;
+}
+
+.select-default svg {
+	color: #9fb1ca;
+}
+
+.select-default svg:hover {
+	color: #637792;
+}
+
+.css-xb97g8:hover {
+	background-color: #f7c1c1 !important;
+}
+
+.start-btn {
+	font-weight: 600;
+	font-size: 1rem;
+	color: #fff;
+	line-height: 2rem;
+	width: 100%;
+	text-transform: capitalize !important;
+	background-color: #ff6b6b;
+	transition: all 0.3s;
+	box-shadow: 0 0 40px rgb(82 85 90 / 10%);
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	border: none;
+	margin-top: 1rem;
+}
+
+.start-btn:hover,
+.start-btn:active {
+	background-color: #ea5555 !important;
+	color: #fff !important;
+	box-shadow: none !important;
+}
+
+.start-btn:focus {
+	box-shadow: none;
+}
+
+.custom-progress-bar {
+	height: 0.75rem;
+}
+.custom-progress-bar div {
+	background-color: #6d95ea;
+}
+
+.upload-label-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+.upload-label {
+	color: #637792;
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+	font-weight: 600;
+}
+
+.cancel-label {
+	cursor: pointer;
+	font-weight: 600;
+	color: #3270e9;
+	font-size: 1rem;
+}
+
+.output__table {
+	width: 100%;
+}
+
+.output__table tr {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.output__table th {
+	font-size: 0.85rem;
+	color: #6b7086;
+	font-weight: 600;
+	padding-bottom: 0.1rem;
+	padding-top: 1rem;
+}
+
+.output__table td {
+	border: none;
+	padding: 0.5rem;
+	font-size: 0.8rem;
+	color: #6b7086;
+}
+
+.output__table td label {
+	margin-bottom: 0.1rem;
+}
+
+.status__encoding {
+	height: 0.5rem;
+}
+
+.status__encoding div {
+	background-color: #6d95ea;
+}
+
+.status__btns {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.status__btns button {
+	font-weight: 600;
+	font-size: 0.8rem;
+	color: #3270e9;
+	text-transform: capitalize !important;
+	background-color: #e9effd;
+	transition: all 0.3s;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	border: 1px solid #e9effd;
+	width: 48%;
+	padding: 0.25rem;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.status__btns button:hover {
+	background-color: #d8e7ff;
+	border-color: #d8e7ff;
 }
