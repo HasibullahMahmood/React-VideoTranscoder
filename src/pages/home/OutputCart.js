@@ -4,7 +4,16 @@ import { CgSoftwareDownload } from 'react-icons/cg';
 import { ProgressBar } from 'react-bootstrap';
 
 class OutputCart extends Component {
+	cancelUploadHandler = () => {
+		const { cancel } = this.props;
+		if (cancel) {
+			cancel();
+		}
+	};
+
 	render() {
+		const { progress, uploadSucceed } = this.props;
+
 		return (
 			<>
 				<div className="text-center">
@@ -12,11 +21,26 @@ class OutputCart extends Component {
 				</div>
 				<div>
 					<div className="upload-label-container">
-						<span className="upload-label">Uploading 22%</span>
-						<span className="cancel-label">Cancel</span>
+						<span className="upload-label">
+							{uploadSucceed ? 'Encoding' : 'Uploading'}{' '}
+							{progress.toFixed(0)}%
+						</span>
+						<span
+							className="cancel-label"
+							onClick={() => {
+								uploadSucceed
+									? this.props.reset()
+									: this.cancelUploadHandler();
+							}}
+						>
+							{uploadSucceed ? 'Reset' : 'Cancel'}
+						</span>
 					</div>
 
-					<ProgressBar now={50} className="custom-progress-bar" />
+					<ProgressBar
+						now={progress}
+						className="custom-progress-bar"
+					/>
 				</div>
 				<div>
 					<table className="table output__table">

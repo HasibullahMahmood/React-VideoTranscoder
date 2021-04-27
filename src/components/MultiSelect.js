@@ -5,14 +5,15 @@ import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 
 export default function AnimatedMulti(props) {
-	const { selectedObj, onSelect, options, className, defaultValue } = props;
+	const { selectedObjects, onSelect, options, className } = props;
+
 	return (
 		<Select
 			closeMenuOnSelect={false}
 			components={animatedComponents}
 			isMulti
-			defaultValue={defaultValue}
-			value={selectedObj}
+			defaultValue={[options[0]]}
+			value={selectedObjects}
 			onChange={onSelect}
 			options={options}
 			noOptionsMessage="No Options"

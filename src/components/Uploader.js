@@ -8,13 +8,19 @@ class Uploader extends Component {
 		super(props);
 		this.dropzoneRef = createRef();
 	}
+
 	state = {
 		videoName: '',
 		dropzoneBorderColor: '#d9e0ea',
 	};
+
 	onDrop = (files) => {
+		if (files.length === 0) {
+			return;
+		}
 		const videoName = files[0].name;
 		this.setState({ videoName });
+		this.props.setVideoRef(files[0]);
 	};
 
 	onDragEnter = () => {
@@ -26,10 +32,13 @@ class Uploader extends Component {
 	};
 
 	openDialog = () => {
-		console.log('open dialog');
 		if (this.dropzoneRef.current) {
 			this.dropzoneRef.dropzone.open();
 		}
+	};
+
+	reset = () => {
+		this.setState({ videoName: '' });
 	};
 
 	render() {

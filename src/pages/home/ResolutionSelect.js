@@ -38,12 +38,12 @@ class ResolutionSelect extends Component {
 	};
 	render() {
 		const { options } = this.state;
-		const { selectedObj, onSelect } = this.props;
+		const { selectedObjects, onSelect } = this.props;
 		return (
 			<>
 				<FormLabel className="label">Resolution</FormLabel>
 				<MultiSelect
-					selectedObj={selectedObj}
+					selectedObjects={selectedObjects}
 					onSelect={onSelect}
 					options={options}
 					defaultValue={options[1]}
