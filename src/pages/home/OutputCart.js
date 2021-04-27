@@ -5,9 +5,10 @@ import { ProgressBar } from 'react-bootstrap';
 
 class OutputCart extends Component {
 	cancelUploadHandler = () => {
-		const { cancel } = this.props;
+		const { cancel, reset } = this.props;
 		if (cancel) {
 			cancel();
+			reset();
 		}
 	};
 
