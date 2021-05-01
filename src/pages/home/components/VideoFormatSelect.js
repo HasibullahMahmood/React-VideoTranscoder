@@ -2,43 +2,11 @@ import React, { Component } from "react";
 import { FormLabel } from "react-bootstrap";
 
 import CustomSelect from "../../../components/CustomSelect";
+import AvailableFormats from "../../../data/availableFormats";
 
 class VideoFormatSelect extends Component {
   state = {
-    options: [
-      {
-        label: "mp4",
-        value: 1,
-      },
-      {
-        label: "avi",
-        value: 2,
-      },
-      {
-        label: "mpeg",
-        value: 3,
-      },
-      {
-        label: "mov",
-        value: 4,
-      },
-      {
-        label: "flv",
-        value: 5,
-      },
-      {
-        label: "3gp",
-        value: 6,
-      },
-      {
-        label: "webm",
-        value: 7,
-      },
-      {
-        label: "mkv",
-        value: 8,
-      },
-    ],
+    options: AvailableFormats,
   };
   render() {
     const { options } = this.state;

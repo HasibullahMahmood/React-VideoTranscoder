@@ -28,7 +28,7 @@ class Home extends Component {
       value: 1,
     },
     selectedCodec: {
-      label: "H.264",
+      label: "h264",
       value: 1,
     },
     selectedResolutions: [

@@ -2,23 +2,11 @@ import React, { Component } from "react";
 import { FormLabel } from "react-bootstrap";
 
 import CustomSelect from "../../../components/CustomSelect";
+import availableCodecs from "../../../data/availableCodecs";
 
 class CodecSelect extends Component {
   state = {
-    options: [
-      {
-        label: "H.264",
-        value: 1,
-      },
-      {
-        label: "H.265",
-        value: 2,
-      },
-      {
-        label: "VP9",
-        value: 3,
-      },
-    ],
+    options: availableCodecs,
   };
   render() {
     const { options } = this.state;
