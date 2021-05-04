@@ -4,7 +4,6 @@ import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
 import Uploader from '../../components/Uploader';
-
 import { OutputCart, CodecSelect, ResolutionSelect, VideoFormatSelect } from './components/';
 
 const CancelToken = axios.CancelToken;
@@ -17,7 +16,7 @@ class Home extends Component {
 	}
 	state = {
 		videoRef: null,
-		progress: 0,
+		uploadingProgress: 0,
 		selectedVideoFormat: { label: 'avi', value: 45 },
 		selectedCodec: { label: 'mpeg4', value: 155 },
 		selectedResolutions: [
@@ -37,6 +36,7 @@ class Home extends Component {
 		sweetAlertOpen: false,
 		uploadSucceed: false,
 	};
+
 	setVideoRef = (videoRef) => {
 		this.setState({ videoRef });
 	};
@@ -81,7 +81,7 @@ class Home extends Component {
 			const response = await axios.post(url, formData, config);
 
 			if (Boolean(response.data.result) === true) {
-				this.setState({ uploadSucceed: true, progress: 0 });
+				this.setState({ uploadSucceed: true, uploadingProgress: 0 });
 			} else {
 				console.log('False result in posting the video');
 				console.log(response.data);
@@ -98,7 +98,7 @@ class Home extends Component {
 
 	onUploadProgress = (progressEvent) => {
 		let uploadPercentage = (progressEvent.loaded / progressEvent.total) * 100;
-		this.setState({ progress: uploadPercentage });
+		this.setState({ uploadingProgress: uploadPercentage });
 	};
 
 	onVideoFormatSelect = (selectedVideoFormat) => {
@@ -116,7 +116,7 @@ class Home extends Component {
 	resetHandler = () => {
 		this.setState({
 			disableInputs: false,
-			progress: 0,
+			uploadingProgress: 0,
 			uploadSucceed: false,
 		});
 		this.resetUploaderCompRef.current.reset();
@@ -126,7 +126,7 @@ class Home extends Component {
 		const {
 			disableInputs,
 			sweetAlertOpen,
-			progress,
+			uploadingProgress,
 			selectedVideoFormat,
 			selectedCodec,
 			selectedResolutions,
@@ -166,10 +166,11 @@ class Home extends Component {
 						<Col lg={6} className="px-2 mb-3">
 							<div className="home__right-cart">
 								<OutputCart
-									progress={progress}
+									uploadingProgress={uploadingProgress}
 									cancel={cancel}
 									uploadSucceed={uploadSucceed}
 									reset={this.resetHandler}
+									selectedResolutionLength={selectedResolutions.length}
 								/>
 							</div>
 						</Col>
