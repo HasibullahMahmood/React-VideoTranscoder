@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { RiPlayCircleLine } from "react-icons/ri";
 import { CgSoftwareDownload } from "react-icons/cg";
 import { ProgressBar } from "react-bootstrap";
 import openSocket from "socket.io-client";
-import { Link } from "react-router-dom";
+import ReactPlayer from "react-player/lazy";
 import axios from "axios";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 class OutputCart extends Component {
   state = {
@@ -24,6 +26,9 @@ class OutputCart extends Component {
       } else if (data.action === "end") {
         this.handleEncodingEnded(data);
       }
+    });
+    socket.on("Error", (data) => {
+      console.log("Server Encoding Video Error: ", data.error);
     });
   };
 
@@ -177,14 +182,13 @@ const EncodingOutputRow = (props) => {
 };
 
 const EndedOutputRow = (props) => {
-  const {
-    videoFile,
-    resolution,
-    targetSize,
-    videoFolder,
-    videoFormat,
-  } = props.data;
-  console.log(props.data);
+  const { videoFile, resolution, targetSize, videoFolder } = props.data;
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <tr>
       <td className="col-3 col-lg-2 text-center">{resolution.label}</td>
@@ -193,31 +197,51 @@ const EndedOutputRow = (props) => {
       </td>
       <td className="col-7 col-lg-8">
         <div className="status__btns">
-          <button onClick={() => console.log("playing " + videoFolder)}>
-            <Link
-              target="_blank"
-              to={{
-                pathname: "/video",
-                search: `?d=${videoFolder}&f=${videoFile}`,
-                state: {
-                  videoFile: videoFile,
-                  videoFolder: videoFolder,
-                  videoFormat: videoFormat,
-                },
-              }}
-            >
-              <RiPlayCircleLine size={20} className="mr-1" />
-              Play
-            </Link>
+          <button onClick={handleShow}>
+            <RiPlayCircleLine size={20} className="mr-1" />
+            Play
           </button>
-          <button onClick={() => alert("Downloading " + videoFolder)}>
+          <button onClick={() => console.log("Downloading " + videoFolder)}>
             <CgSoftwareDownload size={20} className="mr-1" />
             Download
           </button>
         </div>
+        <VideoStreamPopUp
+          show={show}
+          videoFile={videoFile}
+          videoFolder={videoFolder}
+          handleClose={handleClose}
+        />
       </td>
     </tr>
   );
 };
+
+function VideoStreamPopUp(props) {
+  const { show, handleClose, videoFolder, videoFile } = props;
+
+  return (
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Video</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            controls={true}
+            url={`http://localhost:5000/video/${videoFolder}/${videoFile}`}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
 
 export { OutputCart };

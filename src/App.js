@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Home from "./pages/home/index";
-import VideoStream from "./pages/videoStream";
 import "./App.css";
 
 axios.defaults.baseURL = "http://localhost:5000";
@@ -19,7 +18,6 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/" component={Home} exact={true} />
-            <Route path="/video" component={VideoStream} />
             <Route component={PageNotFound} />
           </Switch>
         </div>
