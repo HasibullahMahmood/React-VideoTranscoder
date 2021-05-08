@@ -1,28 +1,19 @@
-import React, { Component } from "react";
-import { FormLabel } from "react-bootstrap";
+import React, { Component } from 'react';
+import { FormLabel } from 'react-bootstrap';
 
-import CustomSelect from "../../../components/CustomSelect";
-import AvailableFormats from "../../../data/availableFormats";
+import CustomSelect from '../../../components/CustomSelect';
+import formatsAndCodecs from '../../../data/formatsAndCodecs';
 
 class VideoFormatSelect extends Component {
-  state = {
-    options: AvailableFormats,
-  };
-  render() {
-    const { options } = this.state;
-    const { selectedObj, onSelect } = this.props;
-    return (
-      <>
-        <FormLabel className="label">Video Format</FormLabel>
-        <CustomSelect
-          selectedObj={selectedObj}
-          onSelect={onSelect}
-          options={options}
-          defaultValue={options[0]}
-        />
-      </>
-    );
-  }
+	render() {
+		const { selectedFormat, onFormatSelect } = this.props;
+		return (
+			<>
+				<FormLabel className="label">Video Format</FormLabel>
+				<CustomSelect options={formatsAndCodecs} selectedObj={selectedFormat} onSelect={onFormatSelect} />
+			</>
+		);
+	}
 }
 
 export { VideoFormatSelect };
