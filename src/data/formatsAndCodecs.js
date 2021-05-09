@@ -5,7 +5,7 @@ const formats = [
 		codecs: [
 			{ label: 'H.264', value: 'libx264' },
 			{ label: 'H.265', value: 'libx265' },
-			{ label: 'AV1', value: 'av1' },
+			{ label: 'AV1', value: 'libaom-av1' },
 		],
 	},
 	{
@@ -29,8 +29,8 @@ const formats = [
 		label: 'WEBM',
 		value: 'webm',
 		codecs: [
-			{ label: 'VP8', value: 'vp8' },
-			{ label: 'VP9', value: 'vp9' },
+			{ label: 'VP8', value: 'libvpx' },
+			{ label: 'VP9', value: 'libvpx-vp9' },
 		],
 	},
 ];
