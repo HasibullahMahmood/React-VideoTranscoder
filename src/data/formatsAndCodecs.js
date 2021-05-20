@@ -9,6 +9,15 @@ const formats = [
 		],
 	},
 	{
+		label: 'WEBM',
+		value: 'webm',
+		codecs: [
+			{ label: 'VP8', value: 'libvpx' },
+			{ label: 'VP9', value: 'libvpx-vp9' },
+		],
+	},
+	{
+		isDisabled: true,
 		label: 'HLS',
 		value: 'hls',
 		codecs: [
@@ -17,20 +26,13 @@ const formats = [
 		],
 	},
 	{
+		isDisabled: true,
 		label: 'MPEG-DASH',
 		value: 'dash',
 		codecs: [
 			{ label: 'H.264', value: 'libx264' },
 			{ label: 'H.265', value: 'libx265' },
 			{ label: 'VP9', value: 'vp9' },
-		],
-	},
-	{
-		label: 'WEBM',
-		value: 'webm',
-		codecs: [
-			{ label: 'VP8', value: 'libvpx' },
-			{ label: 'VP9', value: 'libvpx-vp9' },
 		],
 	},
 ];

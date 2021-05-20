@@ -135,7 +135,7 @@ class Home extends Component {
 		return (
 			<main>
 				<div className="home__header">
-					<h1>Welcome to Video Converter Website</h1>
+					<h1>Welcome to Video Transcoder Website</h1>
 				</div>
 
 				<Container>
